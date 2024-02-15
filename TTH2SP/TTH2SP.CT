@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"精元點數"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"花無缺"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"江小魚"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"張菁"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>10</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"鐵心蘭"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>14</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"荷露"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"黑蜘蛛"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>1C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"軒轅三光"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>20</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"燕南天"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"憐星"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>46C</Offset>
+            <Offset>2C</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"等級"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"花無缺"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"江小魚"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"張菁"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>10</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"鐵心蘭"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>14</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"荷露"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"黑蜘蛛"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>1C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"軒轅三光"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>20</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"燕南天"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"憐星"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"TTH2SP.exe"+000F9C78</Address>
+          <Offsets>
+            <Offset>468</Offset>
+            <Offset>2C</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
