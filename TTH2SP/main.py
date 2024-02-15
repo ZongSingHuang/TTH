@@ -1,7 +1,6 @@
+import HuaWuQue
 import pandas as pd
 import pymem
-
-import HuaWuQue
 
 table_HWQ = HuaWuQue.init()
 table_HWQ = pd.DataFrame(table_HWQ)
@@ -25,6 +24,8 @@ for cat, group in table_HWQ.groupby("cat"):
     try:
         mem.read_int(get_pt(module + base, offsets=group.loc[0, "offset"]))
     except pymem.exception.MemoryReadError:
+        is_cat = table_HWQ["cat"] == cat
+        table_HWQ.loc[is_cat, "activate"] = 0
         print("尚未取得使用權")
         print("=" * 20)
         continue
