@@ -243,6 +243,7 @@ class GuiApp:
     def run(self):
         self.mainwindow.mainloop()
 
+    # 與遊戲連線
     def connect(self) -> tuple:
         try:
             mem = pymem.Pymem(self.config["game"])
@@ -253,26 +254,34 @@ class GuiApp:
         except Exception:
             return (None, None)
 
+    # 數據庫清洗
     def read_db(self, cat: str | None, item: str | None) -> pd.DataFrame:
+        # 複製
         table = self.config["table"].copy()
 
+        # 因為 str.contains無法辨別 NaN，故空值填補為空字串
         table.fillna("", inplace=True)
 
+        # 考慮特定 act
         is_act = table["act"] == 1
         table = table.loc[is_act].copy()
 
+        # 考慮特定 cat
         if cat:
             is_cat = table["cat"].str.contains(cat)
             table = table.loc[is_cat].copy()
 
+        # 考慮特定 item
         if item:
             is_item = table["item"].str.contains(item)
             table = table.loc[is_item].copy()
 
+        # hex to dec
         table[self.var_role.get()] = table[self.var_role.get()].apply(int, base=16)
         table["offset"] = table["offset"].apply(int, base=16)
         return table
 
+    # 取得記憶體位址
     def get_addr(self, mem, base, offsets):
         addr = mem.read_int(base)
         for idx, offset in enumerate(offsets):
@@ -281,18 +290,29 @@ class GuiApp:
         addr = addr + int(offsets[-1])
         return addr
 
+    # 作弊
     def cheating(self, cat: str | None, item: str | None, val: int) -> None:
+        # 連線
         (mem, module) = self.connect()
+
+        # 若連線成功，則嘗試作弊
         if module:
+            # 根據條件，從數據庫搜尋符合的資料
             table = self.read_db(cat=cat, item=item)
+            # 逐一修改遊戲參數
             for idx, row in table.iterrows():
+                # 偏移量
                 offsets = row[[self.var_role.get(), "offset"]].tolist()
+                # 記憶體位址 = 基址 + 偏移量
                 addr = self.get_addr(
                     mem=mem, base=module + self.config["base"], offsets=offsets
                 )
+                # 修改遊戲參數
                 try:
                     mem.write_int(addr, val)
                 except Exception:
+                    # 如果是角色屬性寫入失敗，原因是目前劇情進度尚未獲得該角色的使用權
+                    # 在花無缺早期路線中，無法修改燕南天和憐星!
                     print(f"{row['cat']}-{row['item']} 寫入失敗!")
 
 
