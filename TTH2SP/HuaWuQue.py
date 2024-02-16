@@ -1,4 +1,4 @@
-def init() -> list:
+def init_property() -> list:
     HuaWuQue = [
         {
             "activate": 1,
@@ -1385,6 +1385,61 @@ def init() -> list:
             "offset": [0x2C, 0x488],
         },
     ]
+
+    # ================== 秘笈 ==================
+    MiJi = list()
+    for idx, val in enumerate(range(0, 356, 4)):
+        MiJi.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "秘笈",
+                "item": f"秘笈 {idx + 1}",
+                "offset": [0x40, 0x4B4 + val],
+            }
+        )
+
+    # ================== 藥草 ==================
+    YaoCao = list()
+    for idx, val in enumerate(range(0, 68, 4)):
+        YaoCao.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "藥草",
+                "item": f"藥草 {idx + 1}",
+                "offset": [0x40, 0x284 + val],
+            }
+        )
+    for idx, val in enumerate(range(0, 12, 4)):
+        YaoCao.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "藥草",
+                "item": f"藥草 {idx + 18}",
+                "offset": [0x40, 0x364 + val],
+            }
+        )
+
+    # ================== 刀 ==================
+    Dao = list()
+    for idx, val in enumerate(range(0, 128, 4)):
+        Dao.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "刀",
+                "item": f"刀 {idx + 1}",
+                "offset": [0x40, 0x4 + val],
+            }
+        )
+
+    # 整理
     result = (
         HuaWuQue
         + JiangXiaoYu
@@ -1395,5 +1450,8 @@ def init() -> list:
         + XuanYuanSanGuang
         + YanNanTian
         + LianXing
+        + MiJi
+        + YaoCao
+        + Dao
     )
     return result
