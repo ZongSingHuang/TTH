@@ -13,7 +13,7 @@ def get_pt(base, offsets):
 
 base = 0x000F9C78
 game = "TTH2SP.exe"
-role = "江小魚"
+role = "花無缺"
 
 match game:
     case "TTH2SP.exe":
@@ -35,7 +35,7 @@ if base and not table.empty:
     # 道具(含錢, 藥草, 裝備等)，範圍在 [0x40(花無缺)or0x44(江小魚), 0x0]~[0x40(花無缺)or0x44(江小魚), 0x8E8]
     tmp = list()
     for idx, val in enumerate(range(0, 2284, 4)):
-        offset = [0x44, 0x0 + val]
+        offset = [0x40, 0x0 + val]
         mem.write_int(get_pt(module + base, offsets=offset), idx + 1)
         tmp.append({"addr": hex(0x0 + val), "amt": idx + 1})
     pd.DataFrame(tmp).to_excel("123.xlsx")
