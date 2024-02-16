@@ -1386,6 +1386,18 @@ def init_property() -> list:
         },
     ]
 
+    # ================== 錢 ==================
+    Qian = [
+        {
+            "activate": 1,
+            "game": "TTH2SP.exe",
+            "role": "花無缺",
+            "cat": "錢",
+            "item": "錢",
+            "offset": [0x40, 0x0],
+        },
+    ]
+
     # ================== 秘笈 ==================
     MiJi = list()
     for idx, val in enumerate(range(0, 356, 4)):
@@ -1439,6 +1451,118 @@ def init_property() -> list:
             }
         )
 
+    # ================== 劍 ==================
+    Jian = list()
+    for idx, val in enumerate(range(0, 124, 4)):
+        Jian.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "劍",
+                "item": f"劍 {idx + 1}",
+                "offset": [0x40, 0x88 + val],
+            }
+        )
+
+    # ================== 鞭 ==================
+    Bian = list()
+    for idx, val in enumerate(range(0, 52, 4)):
+        Bian.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "鞭",
+                "item": f"鞭 {idx + 1}",
+                "offset": [0x40, 0x108 + val],
+            }
+        )
+
+    # ================== 甲 ==================
+    Jia = list()
+    for idx, val in enumerate(range(0, 228, 4)):
+        Jia.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "甲",
+                "item": f"甲 {idx + 1}",
+                "offset": [0x40, 0x140 + val],
+            }
+        )
+
+    # ================== 靴 ==================
+    Xue = list()
+    for idx, val in enumerate(range(0, 80, 4)):
+        Xue.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "靴",
+                "item": f"靴 {idx + 1}",
+                "offset": [0x40, 0x234 + val],
+            }
+        )
+
+    # ================== 弓 ==================
+    Gong = list()
+    for idx, val in enumerate(range(0, 52, 4)):
+        Gong.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "靴",
+                "item": f"靴 {idx + 1}",
+                "offset": [0x40, 0x70C + val],
+            }
+        )
+
+    # ================== 醫療 ==================
+    YiLiao = list()
+    for idx, val in enumerate(range(0, 148, 4)):
+        YiLiao.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "醫療",
+                "item": f"醫療 {idx + 1}",
+                "offset": [0x40, 0x2D0 + val],
+            }
+        )
+
+    # ================== 暗器 ==================
+    AnQi = list()
+    for idx, val in enumerate(range(0, 40, 4)):
+        AnQi.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "暗器",
+                "item": f"暗器 {idx + 1}",
+                "offset": [0x40, 0x3EC + val],
+            }
+        )
+
+    # ================== 道具 ==================
+    DaoJu = list()
+    for idx, val in enumerate(range(0, 140, 4)):
+        DaoJu.append(
+            {
+                "activate": 1,
+                "game": "TTH2SP.exe",
+                "role": "花無缺",
+                "cat": "道具",
+                "item": f"道具 {idx + 1}",
+                "offset": [0x40, 0x414 + val],
+            }
+        )
+
     # 整理
     result = (
         HuaWuQue
@@ -1450,8 +1574,17 @@ def init_property() -> list:
         + XuanYuanSanGuang
         + YanNanTian
         + LianXing
+        + Qian
         + MiJi
         + YaoCao
         + Dao
+        + Jian
+        + Bian
+        + Jia
+        + Xue
+        + Gong
+        + YiLiao
+        + AnQi
+        + DaoJu
     )
     return result
