@@ -17,8 +17,10 @@ class GuiApp:
         self.config = {
             "base": 0x000F9C78,
             "game": "TTH2SP.exe",
-            "table": pd.read_excel("database.xlsx"),
         }
+        self.config["table"] = (
+            pd.read_excel("database.xlsx", sheet_name=self.config["game"]),
+        )
 
         # ============== 選擇角色 ==============
         self.lab_msg1 = tk.Label(frame1, name="lab_msg1")
