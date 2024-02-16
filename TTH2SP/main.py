@@ -47,7 +47,7 @@ if module:
         addr = get_addr(mem=mem, base=module + config["base"], offsets=offsets)
         # 修改遊戲參數
         try:
-            mem.write_int(addr, val)
+            mem.write_int(addr, idx + 1)
         except Exception:
             # 如果是角色屬性寫入失敗，原因是目前劇情進度尚未獲得該角色的使用權
             # 在花無缺早期路線中，無法修改燕南天和憐星!
