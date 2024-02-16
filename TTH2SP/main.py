@@ -25,7 +25,8 @@ match game:
 
 if base and not table.empty:
     is_role = table["role"] == role
-    table = table.loc[is_role].copy()
+    is_act = table["act"] == 1
+    table = table.loc[is_role & is_act].copy()
     table["offset1"] = table["offset1"].apply(int, base=16)
     table["offset2"] = table["offset2"].apply(int, base=16)
     mem = pymem.Pymem(game)
@@ -66,167 +67,121 @@ if base and not table.empty:
             print(f"{row['item']}: {val}")
         print("=" * 20)
 
-# idx = 0
-# # ================== 錢 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "錢":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    idx = 0
+    # ================== 錢 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "錢":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 秘笈 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "秘笈":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 武器 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "武器":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 藥草 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "藥草":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 甲 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "甲":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 刀 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "刀":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 靴 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "靴":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 劍 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "劍":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 藥草 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "藥草":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 鞭 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "鞭":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 醫療 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "醫療":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 甲 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "甲":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 戰鬥 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "戰鬥":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 靴 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "靴":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 暗器 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "暗器":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 弓 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "弓":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 道具 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "道具":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 醫療 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "醫療":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
+    # ================== 秘笈 ==================
+    for _, row in table.iterrows():
+        if row["cat"] != "秘笈":
+            continue
+        print(f"【{row['item']}】")
+        offsets = row[["offset1", "offset2"]].tolist()
+        mem.write_int(get_pt(module + base, offsets=offsets), idx + 1)
+        print(f"{row['item']}: {idx + 1}")
+        print("=" * 20)
+        idx += 1
 
-# # ================== 暗器 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "暗器":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
-
-# # ================== 道具 ==================
-# for _, row in table_HWQ.iterrows():
-#     if row["cat"] != "道具":
-#         continue
-#     print(f"【{row['item']}】")
-#     if not row["activate"]:
-#         print(f"{row['item']}: 已關閉")
-#         continue
-#     mem.write_int(get_pt(module + base, offsets=row["offset"]), idx + 1)
-#     print(f"{row['item']}: {idx + 1}")
-#     print("=" * 20)
-#     idx += 1
-
-# 道具(含錢, 藥草, 裝備等)，範圍在 [0x40, 0x0]~[0x40, 0x8E8]
-tmp = list()
-for idx, val in enumerate(range(0, 2284, 4)):
-    offset = [0x40, 0x0 + val]
-    mem.write_int(get_pt(module + base, offsets=offset), idx + 1)
-    tmp.append({"addr": hex(0x0 + val), "amt": idx + 1})
+# # 道具(含錢, 藥草, 裝備等)，範圍在 [0x40, 0x0]~[0x40, 0x8E8]
+# tmp = list()
+# for idx, val in enumerate(range(0, 2284, 4)):
+#     offset = [0x40, 0x0 + val]
+#     mem.write_int(get_pt(module + base, offsets=offset), idx + 1)
+#     tmp.append({"addr": hex(0x0 + val), "amt": idx + 1})
 # pd.DataFrame(tmp).to_excel("123.xlsx")
