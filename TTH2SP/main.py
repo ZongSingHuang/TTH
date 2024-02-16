@@ -1,45 +1,70 @@
-import HuaWuQue
 import pandas as pd
 import pymem
-
-table_HWQ = HuaWuQue.init_property()
-table_HWQ = pd.DataFrame(table_HWQ)
 
 
 def get_pt(base, offsets):
     addr = mem.read_int(base)
     for idx, offset in enumerate(offsets):
         if idx != len(offsets) - 1:
-            addr = mem.read_int(addr + offset)
-    addr = addr + offsets[-1]
+            addr = mem.read_int(addr + int(offset))
+    addr = addr + int(offsets[-1])
     return addr
 
 
 base = 0x000F9C78
-mem = pymem.Pymem("TTH2SP.exe")
-module = pymem.process.module_from_name(mem.process_handle, "TTH2SP.exe").lpBaseOfDll
+game = "TTH2SP.exe"
+role = "花無缺"
 
-# # ================== 屬性 ==================
-# for cat, group in table_HWQ.groupby("cat"):
-#     group.reset_index(inplace=True)
-#     print(f"【{cat}】")
-#     try:
-#         mem.read_int(get_pt(module + base, offsets=group.loc[0, "offset"]))
-#     except pymem.exception.MemoryReadError:
-#         is_cat = table_HWQ["cat"] == cat
-#         table_HWQ.loc[is_cat, "activate"] = 0
-#         print("尚未取得使用權")
-#         print("=" * 20)
-#         continue
+match game:
+    case "TTH2SP.exe":
+        base = 0x000F9C78
+        table = pd.read_excel("database.xlsx", sheet_name=game)
+    case _:
+        base = None
 
-#     for idx, row in group.iterrows():
-#         if not row["activate"]:
-#             print(f"{row['item']}: 已關閉")
-#             continue
 
-#         val = mem.read_int(get_pt(module + base, offsets=row["offset"]))
-#         print(f"{row['item']}: {val}")
-#     print("=" * 20)
+if base and not table.empty:
+    is_role = table["role"] == role
+    table = table.loc[is_role].copy()
+    table["offset1"] = table["offset1"].apply(int, base=16)
+    table["offset2"] = table["offset2"].apply(int, base=16)
+    mem = pymem.Pymem(game)
+    module = pymem.process.module_from_name(mem.process_handle, game).lpBaseOfDll
+
+    # ================== 屬性 ==================
+    for cat, group in table.groupby("cat"):
+        if cat not in [
+            "花無缺",
+            "江小魚",
+            "張菁",
+            "鐵心蘭",
+            "荷露",
+            "黑蜘蛛",
+            "軒轅三光",
+            "燕南天",
+            "憐星",
+        ]:
+            continue
+        group.reset_index(inplace=True)
+        print(f"【{cat}】")
+        try:
+            offsets = group.loc[0, ["offset1", "offset2"]].tolist()
+            mem.read_int(get_pt(module + base, offsets=offsets))
+        except pymem.exception.MemoryReadError:
+            is_cat = table["cat"] == cat
+            table.loc[is_cat, "activate"] = 0
+            print("尚未取得使用權")
+            print("=" * 20)
+            continue
+
+        for idx, row in group.iterrows():
+            if not row["act"]:
+                print(f"{row['item']}: 已關閉")
+                continue
+            offsets = row[["offset1", "offset2"]].tolist()
+            val = mem.read_int(get_pt(module + base, offsets=offsets))
+            print(f"{row['item']}: {val}")
+        print("=" * 20)
 
 # idx = 0
 # # ================== 錢 ==================
@@ -204,4 +229,4 @@ for idx, val in enumerate(range(0, 2284, 4)):
     offset = [0x40, 0x0 + val]
     mem.write_int(get_pt(module + base, offsets=offset), idx + 1)
     tmp.append({"addr": hex(0x0 + val), "amt": idx + 1})
-pd.DataFrame(tmp).to_excel("123.xlsx")
+# pd.DataFrame(tmp).to_excel("123.xlsx")
