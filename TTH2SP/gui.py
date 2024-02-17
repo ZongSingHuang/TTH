@@ -12,20 +12,20 @@ class GuiApp:
         toplevel1.configure(height=200, width=200)
         frame1 = tk.Frame(toplevel1)
         frame1.configure(height=600, width=1100)
+        frame1.pack(side="top")
 
         # ============== 參數 ==============
         self.config = {
             "base": 0x000F9C78,
             "game": "TTH2SP.exe",
+            "cat": None,
+            "item": None,
         }
-        self.config["table"] = (
-            pd.read_excel("database.xlsx", sheet_name=self.config["game"]),
+        self.config["table"] = pd.read_excel(
+            "database.xlsx", sheet_name=self.config["game"]
         )
 
         # ============== 選擇角色 ==============
-        self.lab_msg1 = tk.Label(frame1, name="lab_msg1")
-        self.lab_msg1.configure(text="角色")
-        self.lab_msg1.place(anchor="nw", x=100, y=50)
         self.rad_JiangXiaoYu = tk.Radiobutton(frame1, name="rad_jiangxiaoyu")
         self.var_role = tk.StringVar(value="江小魚")
         self.rad_JiangXiaoYu.configure(
@@ -66,31 +66,31 @@ class GuiApp:
         )
         self.btn_skill.place(anchor="nw", x=300, y=200)
 
-        # ============== 道具 ==============
+        # ============== 配件 ==============
         self.btn_tool = tk.Button(frame1, name="btn_tool")
         self.btn_tool.configure(
             foreground="#ff0000",
-            text="道具 6",
-            command=partial(self.cheating, "道具", None, 6),
+            text="配件 6",
+            command=partial(self.cheating, "配件", None, 6),
         )
         self.btn_tool.place(anchor="nw", x=200, y=200)
 
-        # ============== 藥品 ==============
+        # ============== 丹藥 ==============
         self.btn_medicine = tk.Button(
             frame1,
             name="btn_medicine",
-            command=partial(self.cheating, "藥品", None, 99),
+            command=partial(self.cheating, "丹藥", None, 99),
         )
-        self.btn_medicine.configure(text="藥品 99")
+        self.btn_medicine.configure(text="丹藥 99")
         self.btn_medicine.place(anchor="nw", x=200, y=250)
 
-        # ============== 毒藥 ==============
+        # ============== 暗器 ==============
         self.btn_poison = tk.Button(
             frame1,
             name="btn_poison",
-            command=partial(self.cheating, "毒藥", None, 99),
+            command=partial(self.cheating, "暗器", None, 99),
         )
-        self.btn_poison.configure(text="毒藥 99")
+        self.btn_poison.configure(text="暗器 99")
         self.btn_poison.place(anchor="nw", x=300, y=250)
 
         # ============== 武器 ==============
@@ -201,26 +201,39 @@ class GuiApp:
         )
         self.btn_pt.place(anchor="nw", x=300, y=450)
 
+        # ============== 客製化 ==============
+        self.var_cat = tk.StringVar(
+            value=self.config["table"]["cat"].dropna().unique().tolist()
+        )
+        self.lb_cat = tk.Listbox(frame1, name="lb_cat", listvariable=self.var_cat)
+        self.lb_cat.place(anchor="nw", x=500, y=200)
+        self.lb_cat.bind("<<ListboxSelect>>", self.select_cat)
+        self.var_item = tk.StringVar()
+        self.lb_item = tk.Listbox(frame1, name="lb_item", listvariable=self.var_item)
+        self.lb_item.place(anchor="nw", x=700, y=200)
+        self.lb_item.bind("<<ListboxSelect>>", self.select_item)
+        self.ent_read = tk.Entry(frame1, name="ent_read")
+        self.ent_read.configure(state=tk.DISABLED, width=10)
+        self.ent_read.place(anchor="nw", x=900, y=200)
+        self.ent_write = tk.Entry(frame1, name="ent_write")
+        self.ent_write.configure(width=10)
+        self.ent_write.place(anchor="nw", x=900, y=250)
+        self.btn_write = tk.Button(
+            frame1, name="btn_write", command=self.single_cheating
+        )
+        self.btn_write.configure(text="修改")
+        self.btn_write.place(anchor="nw", x=900, y=300)
+
         # ============== 其他 ==============
+        self.lab_msg1 = tk.Label(frame1, name="lab_msg1")
+        self.lab_msg1.configure(text="角色")
+        self.lab_msg1.place(anchor="nw", x=100, y=50)
         self.lab_msg2 = tk.Label(frame1, name="lab_msg2")
         self.lab_msg2.configure(text="套用到所有角色")
         self.lab_msg2.place(anchor="nw", x=100, y=150)
         self.lab_msg3 = tk.Label(frame1, name="lab_msg3")
         self.lab_msg3.configure(text="客製化")
         self.lab_msg3.place(anchor="nw", x=500, y=150)
-        self.lb_cat = tk.Listbox(frame1, name="lb_cat")
-        self.lb_cat.place(anchor="nw", x=500, y=200)
-        self.lb_item = tk.Listbox(frame1, name="lb_item")
-        self.lb_item.place(anchor="nw", x=700, y=200)
-        self.ent_read = tk.Entry(frame1, name="ent_read")
-        self.ent_read.configure(state="readonly", width=10)
-        self.ent_read.place(anchor="nw", x=900, y=200)
-        self.btn_write = tk.Button(frame1, name="btn_write")
-        self.btn_write.configure(text="修改")
-        self.btn_write.place(anchor="nw", x=900, y=300)
-        self.ent_write = tk.Entry(frame1, name="ent_write")
-        self.ent_write.configure(width=10)
-        self.ent_write.place(anchor="nw", x=900, y=250)
         self.lab_msg4 = tk.Label(frame1, name="lab_msg4")
         self.lab_msg4.configure(text="類別")
         self.lab_msg4.place(anchor="nw", x=500, y=175)
@@ -233,11 +246,10 @@ class GuiApp:
         self.lab_msg7 = tk.Label(frame1, name="lab_msg7")
         self.lab_msg7.configure(text="欲寫入")
         self.lab_msg7.place(anchor="nw", x=900, y=225)
-        self.lab_result = tk.Label(frame1, name="lab_result")
         self.var_result = tk.StringVar()
+        self.lab_result = tk.Label(frame1, name="lab_result")
         self.lab_result.configure(textvariable=self.var_result)
         self.lab_result.place(anchor="nw", x=950, y=300)
-        frame1.pack(side="top")
 
         # Main widget
         self.mainwindow = toplevel1
@@ -260,9 +272,6 @@ class GuiApp:
     def read_db(self, cat: str | None, item: str | None) -> pd.DataFrame:
         # 複製
         table = self.config["table"].copy()
-
-        # 因為 str.contains無法辨別 NaN，故空值填補為空字串
-        table.fillna("", inplace=True)
 
         # 考慮特定 act
         is_act = table["act"] == 1
@@ -298,7 +307,7 @@ class GuiApp:
         (mem, module) = self.connect()
 
         # 若連線成功，則嘗試作弊
-        if module:
+        if module and val != "" and val is not None:
             # 根據條件，從數據庫搜尋符合的資料
             table = self.read_db(cat=cat, item=item)
             # 逐一修改遊戲參數
@@ -316,6 +325,112 @@ class GuiApp:
                     # 如果是角色屬性寫入失敗，原因是目前劇情進度尚未獲得該角色的使用權
                     # 在花無缺早期路線中，無法修改燕南天和憐星!
                     print(f"{row['cat']}-{row['item']} 寫入失敗!")
+
+    # 檢視
+    def reading(self, cat: str | None, item: str | None) -> int | None:
+        # 連線
+        (mem, module) = self.connect()
+
+        # 若連線成功，則嘗試作弊
+        if module:
+            # 根據條件，從數據庫搜尋符合的資料
+            table = self.read_db(cat=cat, item=item)
+            # 逐一修改遊戲參數
+            for idx, row in table.iterrows():
+                # 偏移量
+                offsets = row[[self.var_role.get(), "offset"]].tolist()
+                # 記憶體位址 = 基址 + 偏移量
+                addr = self.get_addr(
+                    mem=mem, base=module + self.config["base"], offsets=offsets
+                )
+                # 修改遊戲參數
+                try:
+                    val = mem.read_int(addr)
+                    return val
+                except Exception:
+                    # 如果是角色屬性寫入失敗，原因是目前劇情進度尚未獲得該角色的使用權
+                    # 在花無缺早期路線中，無法修改燕南天和憐星!
+                    print(f"{row['cat']}-{row['item']} 讀取失敗!")
+                    return None
+
+    def select_cat(self, event):
+        idx = self.lb_cat.curselection()
+        if idx:
+            cat = self.lb_cat.get(idx)
+            self.config["cat"] = cat
+
+            table = self.read_db(cat=cat, item=None)
+
+            items = table["item"].dropna().unique().tolist()
+            if items:
+                self.var_item.set(tuple(items))
+
+    def select_item(self, event):
+        idx = self.lb_item.curselection()
+        if idx:
+            item = self.lb_item.get(idx)
+            self.config["item"] = item
+
+            val = self.reading(cat=self.config["cat"], item=item)
+            if val is not None:
+                self.ent_read.configure(state=tk.NORMAL)
+                self.ent_read.delete(0, tk.END)
+                self.ent_read.insert(tk.END, val)
+                self.ent_read.configure(state=tk.DISABLED)
+
+    def single_cheating(self):
+        if self.config["cat"] and self.config["item"] and self.ent_write.get() != "":
+            flag = True
+
+            if self.config["item"] in ["升級點數剩餘"]:
+                if 1 <= int(self.ent_write.get()) <= 99:
+                    flag = True
+                else:
+                    flag = False
+
+            if self.config["item"] in [
+                "攻擊 1",
+                "攻擊 2",
+                "防禦 1",
+                "防禦 2",
+                "反應 1",
+                "反應 2",
+                "智力 1",
+                "智力 2",
+            ]:
+                if 1 <= int(self.ent_write.get()) <= 999:
+                    flag = True
+                else:
+                    flag = False
+
+            if self.config["item"] in ["精元點數"]:
+                if 0 <= int(self.ent_write.get()) <= 9999:
+                    flag = True
+                else:
+                    flag = False
+
+            if self.config["item"] in ["當前生命", "最大生命", "當前內力", "最大內力"]:
+                if 1 <= int(self.ent_write.get()) <= 9999:
+                    flag = True
+                else:
+                    flag = False
+
+            if self.config["item"] in ["錢"]:
+                if 0 <= int(self.ent_write.get()) <= 99999:
+                    flag = True
+                else:
+                    flag = False
+
+            if flag:
+                self.cheating(
+                    cat=self.config["cat"],
+                    item=self.config["item"],
+                    val=int(self.ent_write.get()),
+                )
+                self.ent_read.configure(state=tk.NORMAL)
+                self.ent_read.delete(0, tk.END)
+                self.ent_read.insert(tk.END, int(self.ent_write.get()))
+                self.ent_read.configure(state=tk.DISABLED)
 
 
 if __name__ == "__main__":
