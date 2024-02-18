@@ -43,6 +43,17 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
+      <ID>37</ID>
+      <Description>"張菁"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TTHDVD.exe"+000CEB84</Address>
+      <Offsets>
+        <Offset>3CC</Offset>
+        <Offset>718</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>35</ID>
       <Description>"黑蜘蛛"</Description>
       <ShowAsSigned>0</ShowAsSigned>
