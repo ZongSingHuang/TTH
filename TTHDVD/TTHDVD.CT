@@ -2,252 +2,6 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>3</ID>
-      <Description>"指針掃描結果"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CE914</Address>
-      <Offsets>
-        <Offset>3CC</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>4</ID>
-      <Description>"指針掃描結果"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB94</Address>
-      <Offsets>
-        <Offset>8EC</Offset>
-        <Offset>C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>5</ID>
-      <Description>"指針掃描結果"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB94</Address>
-      <Offsets>
-        <Offset>8C0</Offset>
-        <Offset>10</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>6</ID>
-      <Description>"指針掃描結果"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3CC</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>8</ID>
-      <Description>"生命上限"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3AC</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>9</ID>
-      <Description>"內力上限"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3B0</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>10</ID>
-      <Description>"攻擊 1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3B4</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>11</ID>
-      <Description>"防禦 1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3B8</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>12</ID>
-      <Description>"速度 1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3BC</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>13</ID>
-      <Description>"反應 1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3C0</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>14</ID>
-      <Description>"智力 1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3C4</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
-      <Description>"等級"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3C8</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>19</ID>
-      <Description>"精元點"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3CC</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>17</ID>
-      <Description>"當前經驗值"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3D0</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>16</ID>
-      <Description>"經驗值上限"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3D4</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>18</ID>
-      <Description>"當前生命"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3F4</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>20</ID>
-      <Description>"當前內力"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3F8</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>21</ID>
-      <Description>"攻擊 2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>3FC</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>22</ID>
-      <Description>"防禦 2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>400</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>23</ID>
-      <Description>"反應 2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>404</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>24</ID>
-      <Description>"速度 2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>408</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>25</ID>
-      <Description>"智力 2"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>40C</Offset>
-        <Offset>70C</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>28</ID>
-      <Description>"金創藥"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TTHDVD.exe"+000CEB84</Address>
-      <Offsets>
-        <Offset>2D4</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
       <ID>30</ID>
       <Description>"銀兩"</Description>
       <ShowAsSigned>0</ShowAsSigned>
@@ -255,6 +9,37 @@
       <Address>"TTHDVD.exe"+000CEB84</Address>
       <Offsets>
         <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"江小魚"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TTHDVD.exe"+000CEB84</Address>
+      <Offsets>
+        <Offset>3CC</Offset>
+        <Offset>70C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"鐵心男"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TTHDVD.exe"+000CEB84</Address>
+      <Offsets>
+        <Offset>3CC</Offset>
+        <Offset>710</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"鐵心蘭"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TTHDVD.exe"+000CEB84</Address>
+      <Offsets>
+        <Offset>3CC</Offset>
+        <Offset>714</Offset>
       </Offsets>
     </CheatEntry>
   </CheatEntries>
